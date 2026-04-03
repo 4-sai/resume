@@ -1,0 +1,145 @@
+%==============================================================
+%  resume.tex — DevOps / Red Team Engineer Resume
+%  Compiled automatically by GitHub Actions on every push
+%  Edit this file → push → PDF auto-releases
+%==============================================================
+
+\documentclass[10pt, letterpaper]{article}
+
+% ── Packages ─────────────────────────────────────────────────
+\usepackage[
+  top=0.5in, bottom=0.5in,
+  left=0.6in, right=0.6in
+]{geometry}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ── Colors ───────────────────────────────────────────────────
+\definecolor{accent}{HTML}{89b4fa}      % Catppuccin blue
+\definecolor{darktext}{HTML}{1e1e2e}
+\definecolor{mutedtext}{HTML}{6c7086}
+\definecolor{rulecolor}{HTML}{313244}
+
+% ── Hyperlink style ──────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent
+}
+
+% ── Section formatting ───────────────────────────────────────
+\titleformat{\section}
+  {\large\bfseries\color{darktext}}
+  {}{0em}{}
+  [\color{rulecolor}\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% ── No paragraph indent ──────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ── List spacing ─────────────────────────────────────────────
+\setlist[itemize]{
+  leftmargin=1.2em,
+  itemsep=1pt,
+  parsep=0pt,
+  topsep=2pt
+}
+
+%==============================================================
+\begin{document}
+\pagestyle{empty}
+
+%── Header ────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries YOUR NAME}\\[4pt]
+  {\color{mutedtext}\small
+    \faIcon{map-marker-alt}~Panvel, Maharashtra, India \quad
+    \faIcon{envelope}~\href{mailto:you@email.com}{you@email.com} \quad
+    \faIcon{phone}~+91-XXXXXXXXXX \quad
+    \faIcon{github}~\href{https://github.com/YOUR_USERNAME}{github.com/YOUR\_USERNAME} \quad
+    \faIcon{linkedin}~\href{https://linkedin.com/in/YOUR_USERNAME}{linkedin.com/in/YOUR\_USERNAME}
+  }
+\end{center}
+
+\vspace{2pt}
+
+%── Summary ───────────────────────────────────────────────────
+\section{Summary}
+DevOps Engineer with experience in managing large-scale hybrid infrastructure (on-prem + AWS), supporting 10,000+ Linux servers across globally distributed data centers. Experienced in CI/ CD automation with Jenkins and Ansible, Infrastructure as Code using Terraform, and secure DevSecOps integrations. Proven track record of enabling reliable weekly production releases using canary deployments and high-availability architectures. CEH-certified with a strong focus on security-driven automation
+
+%── Skills ────────────────────────────────────────────────────
+\section{Technical Skills}
+
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+  \textbf{Cloud \& Infra}   & AWS (EC2, IAM, S3, EKS, VPC, Auto Scaling, ALB), Terraform, Linux \\[2pt]
+  \textbf{IaC \& Automation} & Bash, Python, YAML \\[2pt]
+  \textbf{Containers}        & Docker, Kubernetes, Helm \\[2pt]
+  \textbf{CI/CD}             & Jenkins, GitHub Actions, GitLab CI/ CD, Ansible, Git, SonarQube \\[2pt]
+  \textbf{Observability}     & Prometheus, Grafana, ELK Stack, Datadog \\[2pt]
+  \textbf{Security / Red Team} & Nmap, Metasploit, Burp Suite, BloodHound, Cobalt Strike, Nuclei, OSINT \\[2pt]
+\end{tabularx}
+
+%── Experience ────────────────────────────────────────────────
+\section{Experience}
+
+\textbf{Release Engineer} \hfill \textitPubMatic} \hfill \textcolor{mutedtext}{Oct 2025 -- Present}
+\begin{itemize}
+  \item Managed large-scale weekly production deployments in globally distributed data centers using Jenkins and Ansible.
+  \item Designed and optimized CI/ CD pipelines for Private Cloud and AWS, improving deployment reliability and consistency
+  \item Built observability stack (Prometheus + Grafana + Loki) reducing MTTR from 45min to 8min
+  \item Deployed and managed containerized applications using Docker, Kubernetes, and Helm.
+\end{itemize}
+
+\vspace{4pt}
+
+\textbfSystems Engineer} \hfill \textit{PubMatic} \hfill \textcolor{mutedtext}{April 2023 -- Oct 2025}
+\begin{itemize}
+  \item Automated server provisioning and configuration management using Ansible, improving environment consistency and reducing provisioning time
+  \item Developed Bash scripts to automate routine administrative and deployment tasks
+  \item Investigated incidents and performed root cause analysis to prevent recurring issues
+\end{itemize}
+
+\vspace{4pt}
+
+\textbf{Systems Administrator} \hfill \textit{TCS} \hfill \textcolor{mutedtext}{Jan 2020 -- Nov 2022}
+\begin{itemize}
+  \item Administered Linux (Ubuntu, CentOS) and Windows servers, handling installation, patching, performance tuning, and security hardening
+  \item Automated administrative and monitoring tasks using Bash scripting and Nagios to improve operational efficiency.
+  \item Configured networking components including firewalls, load balancers, VPNs, and implemented infrastructure SOP documentation.
+\end{itemize}
+
+%── Projects ──────────────────────────────────────────────────
+\section{Projects}
+
+\textbf{\href{https://github.com/4-sai/homelab-k8s}{homelab-k8s}} —  Kubernetes cluster with Ansible. Runs full observability stack and self-hosted services.\\[3pt]
+
+%── Certifications ────────────────────────────────────────────
+\section{Certifications}
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item CEH — EC-Council (2019)
+\end{itemize}
+\end{multicols}
+
+%── Education ─────────────────────────────────────────────────
+\section{Education}
+
+\textbf{B.Sc in Computer Science} \hfill \textit{Osmania University} \hfill \textcolor{mutedtext}{2019}
+
+%── CTF / Recognition ─────────────────────────────────────────
+\section{CTF \& Recognition}
+
+\begin{itemize}
+  \item TryHackMe — Top 5\% globally
+\end{itemize}
+
+\end{document}
