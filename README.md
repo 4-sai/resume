@@ -27,6 +27,7 @@ Edit resume.tex → git push → GitHub Actions compiles PDF → auto-released
 4. A new GitHub Release is created with the PDF attached
 5. The `latest` release link always serves the freshest version
 
+
 ---
 
 ## 🛠️ Build locally
