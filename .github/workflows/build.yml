@@ -1,0 +1,72 @@
+# ============================================================
+#  .github/workflows/build.yml
+#  Compiles resume.tex → resume.pdf on every push to main
+#  Creates a versioned GitHub Release with the PDF attached
+# ============================================================
+
+name: Build & Release Resume
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # allow manual trigger from GitHub UI
+
+permissions:
+  contents: write      # needed to create releases
+
+jobs:
+  build:
+    name: Compile LaTeX → PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Compile LaTeX (uses a prebuilt TeX Live Docker image — fast)
+      - name: Compile resume.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_lualatex: false
+          latexmk_use_xelatex: false
+
+      # 3. Rename output with date for versioning
+      - name: Rename PDF
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          cp resume.pdf "resume_${DATE}.pdf"
+          echo "PDF_NAME=resume_${DATE}.pdf" >> $GITHUB_ENV
+          echo "RELEASE_TAG=v${DATE}" >> $GITHUB_ENV
+
+      # 4. Upload PDF as workflow artifact (downloadable from Actions tab)
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: resume.pdf
+          retention-days: 30
+
+      # 5. Delete existing release with same tag (so re-pushing same day works)
+      - name: Delete existing release if exists
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete "${{ env.RELEASE_TAG }}" --yes 2>/dev/null || true
+          git push --delete origin "${{ env.RELEASE_TAG }}" 2>/dev/null || true
+
+      # 6. Create GitHub Release and attach the PDF
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ env.RELEASE_TAG }}" \
+            "${{ env.PDF_NAME }}" \
+            resume.pdf \
+            --title "Resume — ${{ env.RELEASE_TAG }}" \
+            --notes "Auto-compiled from \`resume.tex\` on push to main.
+
+          **Download:** [resume.pdf](https://github.com/${{ github.repository }}/releases/latest/download/resume.pdf)
+
+          Built by GitHub Actions • ${{ env.RELEASE_TAG }}"
