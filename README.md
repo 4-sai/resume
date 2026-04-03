@@ -2,14 +2,14 @@
 
 > My resume, written in LaTeX. Every push to `main` automatically compiles and releases a fresh PDF.
 
-![Build](https://github.com/YOUR_USERNAME/resume/actions/workflows/build.yml/badge.svg)
-![Release](https://img.shields.io/github/v/release/YOUR_USERNAME/resume?label=latest&color=89b4fa)
+![Build](https://github.com/4-sai/resume/actions/workflows/build.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/4-sai/resume?label=latest&color=89b4fa)
 
 ---
 
 ## ⬇️ Download Latest PDF
 
-**[→ resume.pdf (latest)](https://github.com/YOUR_USERNAME/resume/releases/latest/download/resume.pdf)**
+**[→ resume.pdf (latest)](https://github.com/4-sai/resume/releases/latest/download/resume.pdf)**
 
 This link **always** points to the most recent compiled version.
 
